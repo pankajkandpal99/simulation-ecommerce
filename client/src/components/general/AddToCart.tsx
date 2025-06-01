@@ -26,10 +26,20 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   showPrice = false,
 }) => {
   const dispatch = useAppDispatch();
+  const { authenticated } = useAppSelector((state) => state.auth);
   const { loading } = useAppSelector((state) => state.cart);
 
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.stopPropagation();
+
+    if (!authenticated) {
+      toast.warning("Please login to add items to cart", {
+        position: "top-right",
+        duration: 3000,
+      });
+      return;
+    }
+
     try {
       await dispatch(
         addToCart({

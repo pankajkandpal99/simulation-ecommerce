@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -84,7 +85,40 @@ const Checkout = () => {
       transactionType: data.transactionType,
     };
 
-    await dispatch(createOrder(orderData));
+    try {
+      const result = await dispatch(createOrder(orderData));
+
+      if (createOrder.fulfilled.match(result)) {
+        const payload = result.payload;
+
+        if (payload) {
+          switch (payload.paymentStatus) {
+            case "COMPLETED":
+              dispatch(clearCart());
+              navigate(`/thank-you?orderId=${payload._id}`);
+              break;
+            case "FAILED":
+              navigate(
+                `/payment-failed?reason=declined&orderId=${payload._id}`
+              );
+              break;
+            case "PENDING":
+              navigate(
+                `/payment-failed?reason=gateway_error&orderId=${payload._id}`
+              );
+              break;
+            default:
+              navigate(`/payment-failed?reason=unknown`);
+          }
+        } else {
+          navigate(`/payment-failed?reason=unknown`);
+        }
+      } else if (createOrder.rejected.match(result)) {
+        navigate(`/payment-failed?reason=unknown`);
+      }
+    } catch {
+      navigate(`/payment-failed?reason=unknown`);
+    }
   };
 
   useEffect(() => {

@@ -8,6 +8,7 @@ const Cart = lazy(() => import("../pages/Cart"));
 const Orders = lazy(() => import("../pages/Orders"));
 const Checkout = lazy(() => import("../pages/Checkout"));
 const ThankYou = lazy(() => import("../pages/Thankyou"));
+const PaymentFailed = lazy(() => import("../pages/PaymentFailed"));
 
 const NotFound = lazy(() => import("../pages/NotFound"));
 const Login = lazy(() => import("../pages/Login"));
@@ -36,6 +37,7 @@ export const protectedRoutes: RouteConfig[] = [
   { path: "/checkout", element: Checkout },
   { path: "/orders", element: Orders },
   { path: "thank-you", element: ThankYou },
+  { path: "payment-failed", element: PaymentFailed },
 ];
 
 export const notFoundRoute: RouteConfig = { path: "*", element: NotFound };
