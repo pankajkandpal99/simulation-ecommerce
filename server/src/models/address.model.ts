@@ -1,5 +1,5 @@
-import { IAddress } from "@/types/model/i-address.model.js";
-import { Document, model, Schema, Types } from "mongoose";
+import { IAddress } from "../types/model/i-address.model.js";
+import { model, Schema, Types } from "mongoose";
 
 const AddressSchema = new Schema<IAddress>(
   {

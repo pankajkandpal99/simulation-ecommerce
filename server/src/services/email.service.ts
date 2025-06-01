@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
-import { IOrder } from "@/types/model/i-order.model.js";
-import { env } from "@/config/env.js";
+import { IOrder } from "../types/model/i-order.model.js";
+import { env } from "../config/env.js";
 
 // Configure Mailtrap transporter
 const transporter = nodemailer.createTransport({

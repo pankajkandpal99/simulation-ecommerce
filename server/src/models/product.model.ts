@@ -1,4 +1,4 @@
-import { IProduct, IVariant } from "@/types/model/i-product-model.js";
+import { IProduct, IVariant } from "../types/model/i-product-model.js";
 import { model, Schema } from "mongoose";
 
 const VariantSchema = new Schema<IVariant>(

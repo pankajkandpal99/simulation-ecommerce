@@ -3,7 +3,7 @@ import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { databaseConnection } from "./lib/db.js";
-import { corsOptions, staticCorsOptions } from "./config/corsOptions.js";
+import { corsOptions } from "./config/corsOptions.js";
 import { contextMiddleware } from "./middleware/context.js";
 import path, { dirname } from "path";
 import { env } from "./config/env.js";

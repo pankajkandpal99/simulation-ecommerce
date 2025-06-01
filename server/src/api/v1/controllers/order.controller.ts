@@ -7,12 +7,12 @@ import {
   NotFoundError,
   ValidationError,
 } from "../../../error-handler/index.js";
-import { literal, z } from "zod";
+import { z } from "zod";
 import { OrderStatus } from "../../../types/i-order-status.js";
-import { simulatePayment } from "@/services/payment.service.js";
-import { PaymentStatus } from "@/types/i-payment-status.js";
-import { sendOrderConfirmationEmail } from "@/services/email.service.js";
-import { flatCheckoutSchema } from "@/schema/checkout.schema.js";
+import { simulatePayment } from "../../../services/payment.service.js";
+import { PaymentStatus } from "../../../types/i-payment-status.js";
+import { sendOrderConfirmationEmail } from "../../../services/email.service.js";
+import { flatCheckoutSchema } from "../../../schema/checkout.schema.js";
 
 export const OrderController = {
   createOrder: async (context: RequestContext) => {

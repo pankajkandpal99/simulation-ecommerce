@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { AuthProvider } from "./i-model.js";
-import { ROLE } from "@/config/constants.js";
+import { ROLE } from "../../config/constants.js";
 
 export interface IUser extends Document {
   _id: Types.ObjectId;

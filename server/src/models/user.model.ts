@@ -1,6 +1,6 @@
-import { ROLE } from "@/config/constants.js";
-import { AuthProvider } from "@/types/model/i-model.js";
-import { IUser } from "@/types/model/i-user-model.js";
+import { ROLE } from "../config/constants.js";
+import { AuthProvider } from "../types/model/i-model.js";
+import { IUser } from "../types/model/i-user-model.js";
 import { model, Schema } from "mongoose";
 
 const UserSchema = new Schema<IUser>(

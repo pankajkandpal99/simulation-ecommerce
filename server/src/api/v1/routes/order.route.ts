@@ -4,7 +4,7 @@ import { OrderController } from "../controllers/order.controller.js";
 import {
   createOrderSchema,
   updateOrderStatusSchema,
-} from "@/schema/order.schema.js";
+} from "../../../schema/order.schema.js";
 
 export default (router: Router) => {
   router.post(

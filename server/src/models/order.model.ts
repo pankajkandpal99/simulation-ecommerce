@@ -1,6 +1,6 @@
-import { OrderStatus } from "@/types/i-order-status.js";
-import { PaymentStatus } from "@/types/i-payment-status.js";
-import { IOrder, IOrderItem } from "@/types/model/i-order.model.js";
+import { OrderStatus } from "../types/i-order-status.js";
+import { PaymentStatus } from "../types/i-payment-status.js";
+import { IOrder, IOrderItem } from "../types/model/i-order.model.js";
 import { Schema } from "mongoose";
 import { model } from "mongoose";
 import { AddressSubSchema } from "./address.model.js";

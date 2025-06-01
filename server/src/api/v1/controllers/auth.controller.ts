@@ -11,7 +11,7 @@ import {
   ValidationError,
 } from "../../../error-handler/index.js";
 import { z } from "zod";
-import { loginSchema, registerSchema } from "@/schema/authSchema.js";
+import { loginSchema, registerSchema } from "../../../schema/authSchema.js";
 
 const generateToken = (userId: string, role: ROLE) =>
   jwt.sign({ userId, role }, env.JWT_SECRET, { expiresIn: "7d" });

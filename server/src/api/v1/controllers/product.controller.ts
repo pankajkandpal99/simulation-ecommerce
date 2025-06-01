@@ -1,4 +1,4 @@
-import { Product } from "@/models/product.model.js";
+import { Product } from "../../../models/product.model.js";
 import { RequestContext } from "../../../middleware/context.js";
 import { HttpResponse } from "../../../utils/service-response.js";
 

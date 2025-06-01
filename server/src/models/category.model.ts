@@ -1,4 +1,4 @@
-import { ICategory } from "@/types/model/i-category-model.js";
+import { ICategory } from "../types/model/i-category-model.js";
 import { Schema } from "mongoose";
 import { model } from "mongoose";
 

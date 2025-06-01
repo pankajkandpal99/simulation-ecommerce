@@ -1,7 +1,10 @@
 import { Router } from "express";
 import { createApiHandler } from "../../../utils/api-factory.js";
 import { CartController } from "../controllers/cart.controller.js";
-import { addToCartSchema, updateCartItemSchema } from "@/schema/cart.schema.js";
+import {
+  addToCartSchema,
+  updateCartItemSchema,
+} from "../../../schema/cart.schema.js";
 
 export default (router: Router) => {
   router.get(
