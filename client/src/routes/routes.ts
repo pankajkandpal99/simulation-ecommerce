@@ -1,12 +1,13 @@
 import React, { lazy } from "react";
 
 const Home = lazy(() => import("../pages/Home"));
-const About = lazy(() => import("../pages/About"));
 // const AdminDashboard = lazy(() => import("../pages/AdminDashboard"));
 const Product = lazy(() => import("../pages/Product"));
+const ProductDetails = lazy(() => import("../pages/ProductDetails"));
 const Cart = lazy(() => import("../pages/Cart"));
 const Orders = lazy(() => import("../pages/Orders"));
 const Checkout = lazy(() => import("../pages/Checkout"));
+const ThankYou = lazy(() => import("../pages/Thankyou"));
 
 const NotFound = lazy(() => import("../pages/NotFound"));
 const Login = lazy(() => import("../pages/Login"));
@@ -20,10 +21,8 @@ interface RouteConfig {
 
 export const publicRoutes: RouteConfig[] = [
   { path: "/", element: Home, fullWidth: true },
-  { path: "/about", element: About },
-  { path: "/cart", element: Cart },
   { path: "/products", element: Product },
-  { path: "/checkout", element: Checkout },
+  { path: "/products/:id", element: ProductDetails },
 ];
 
 export const authRoutes: RouteConfig[] = [
@@ -33,7 +32,10 @@ export const authRoutes: RouteConfig[] = [
 
 export const protectedRoutes: RouteConfig[] = [
   // { path: "/admin-dashboard", element: AdminDashboard },
+  { path: "/cart", element: Cart },
+  { path: "/checkout", element: Checkout },
   { path: "/orders", element: Orders },
+  { path: "thank-you", element: ThankYou },
 ];
 
 export const notFoundRoute: RouteConfig = { path: "*", element: NotFound };

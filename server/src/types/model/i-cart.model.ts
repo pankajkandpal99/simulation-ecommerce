@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 
 export interface ICartItem {
+  _id?: Types.ObjectId;
   product: Types.ObjectId;
   variant?: {
     name: string;

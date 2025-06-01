@@ -19,6 +19,7 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.error("Error in request interceptor:", error);
     return Promise.reject(error);
   }
 );
@@ -27,12 +28,12 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
+      console.error("Unauthorized access - logging out", error);
       logout();
-      window.location.href = "/login";
+      // window.location.href = "/login";
     }
     return Promise.reject(error);
   }
 );
 
 export default axiosInstance;
-

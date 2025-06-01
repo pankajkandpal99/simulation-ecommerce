@@ -10,13 +10,11 @@ export const requireAuth = (
   next: NextFunction
 ) => {
   const authHeader = req.headers.authorization;
-
   if (!authHeader?.startsWith("Bearer ")) {
     return ApiResponseService.error(res, "Unauthorized", 401);
   }
 
   const token = authHeader.split(" ")[1];
-  // console.log("token in server : ", token);
 
   try {
     const decoded = jwt.verify(token, env.JWT_SECRET) as {
@@ -34,7 +32,7 @@ export const requireAuth = (
 
     next();
   } catch (err) {
-    // console.log("error inside token catch ");
+    console.error("error inside token catch :", err);
 
     if (err instanceof jwt.TokenExpiredError) {
       return ApiResponseService.error(res, "Token expired", 401);

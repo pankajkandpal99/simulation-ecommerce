@@ -47,7 +47,10 @@ export const AuthService = {
         password: data.password,
       };
 
-      const response = await apiClient.post(API_ENDPOINTS.AUTH.LOGIN, payload);
+      const response = await apiClient.post(
+        `${API_ENDPOINTS.AUTH.LOGIN}`,
+        payload
+      );
 
       return {
         token: response.data.data.token,

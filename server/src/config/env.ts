@@ -12,6 +12,12 @@ const envSchema = z.object({
   COOKIE_DOMAIN: z.string(),
   ALLOWED_ORIGINS: z.string(),
   BASE_URL: z.string(),
+
+  // Mailtrap configuration
+  MAILTRAP_HOST: z.string(),
+  MAILTRAP_PORT: z.string().transform(Number),
+  MAILTRAP_USER: z.string(),
+  MAILTRAP_PASS: z.string(),
 });
 
 export type Env = z.infer<typeof envSchema>;
@@ -27,9 +33,11 @@ export const env: Env = (() => {
       ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS || "",
       BASE_URL: process.env.BASE_URL || "http://localhost:8800",
 
-      CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME!,
-      CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY!,
-      CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET!,
+      // Mailtrap credentials
+      MAILTRAP_HOST: process.env.MAILTRAP_HOST,
+      MAILTRAP_PORT: process.env.MAILTRAP_PORT,
+      MAILTRAP_USER: process.env.MAILTRAP_USER,
+      MAILTRAP_PASS: process.env.MAILTRAP_PASS,
     });
   } catch (error) {
     if (error instanceof z.ZodError) {

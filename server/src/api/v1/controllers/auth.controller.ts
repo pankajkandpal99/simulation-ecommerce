@@ -92,8 +92,10 @@ export const AuthController = {
           throw new AuthenticationError("Invalid credentials");
         }
 
-        // Verify password
-        const isPasswordValid = await compare(password, user.password);
+        const isPasswordValid = await compare(
+          password as string,
+          user.password as string
+        );
         if (!isPasswordValid) {
           throw new AuthenticationError("Invalid credentials");
         }
