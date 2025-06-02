@@ -11,6 +11,7 @@ import {
 } from "../components/ui/select";
 import { ProductCard } from "../sections/Home/ProductCard";
 import { Pagination } from "../components/general/Pagination";
+import { Loader } from "../components/general/Loader";
 
 const Products = () => {
   const dispatch = useAppDispatch();
@@ -59,9 +60,7 @@ const Products = () => {
   };
 
   if (loading) {
-    return (
-      <div className="container py-8 text-center">Loading products...</div>
-    );
+    return <Loader size="large" />;
   }
 
   return (

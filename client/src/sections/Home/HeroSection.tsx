@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="relative bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl p-8 mb-12 overflow-hidden">
       <div className="relative z-10">
@@ -12,7 +15,10 @@ const HeroSection: React.FC = () => {
           Discover our curated collection of high-quality products designed to
           enhance your everyday experience.
         </p>
-        <button className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+        <button
+          onClick={() => navigate("/products")}
+          className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+        >
           Shop Now
         </button>
       </div>

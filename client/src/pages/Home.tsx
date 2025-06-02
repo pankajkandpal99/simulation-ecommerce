@@ -8,10 +8,13 @@ import {
   setFeaturedProducts,
 } from "../features/product/product.slice";
 import { Link } from "react-router-dom";
+import { Loader } from "../components/general/Loader";
 
 const HomePage: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { featuredProducts } = useAppSelector((state) => state.prodcuts);
+  const { featuredProducts, loading } = useAppSelector(
+    (state) => state.prodcuts
+  );
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
   const [selectedVariants, setSelectedVariants] = useState<{
     [key: string]: string;
@@ -67,6 +70,10 @@ const HomePage: React.FC = () => {
       });
   }, [dispatch]);
 
+  if (loading) {
+    return <Loader size="large" />;
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-8">
@@ -100,15 +107,26 @@ const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
-              <ProductCard
-                key={product._id}
-                product={product}
-                onViewProduct={handleViewProduct}
-              />
-            ))}
-          </div>
+          {featuredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {featuredProducts.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  onViewProduct={handleViewProduct}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <h3 className="text-xl font-medium mb-2">
+                No featured products found
+              </h3>
+              <p className="text-muted-foreground">
+                We couldn't find any featured products at the moment
+              </p>
+            </div>
+          )}
         </section>
       </main>
 
