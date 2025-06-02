@@ -7,6 +7,7 @@ import {
   fetchAllProducts,
   setFeaturedProducts,
 } from "../features/product/product.slice";
+import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -61,7 +62,7 @@ const HomePage: React.FC = () => {
       .then((products) => {
         // Set first 3 as featured if there are enough products
         if (products.length >= 3) {
-          dispatch(setFeaturedProducts(products.slice(0, 3)));
+          dispatch(setFeaturedProducts(products.slice(0, 12)));
         }
       });
   }, [dispatch]);
@@ -76,12 +77,30 @@ const HomePage: React.FC = () => {
             <h2 className="text-2xl font-bold text-foreground">
               Featured Products
             </h2>
-            <p className="text-muted-foreground">
-              {featuredProducts.length} products
-            </p>
+            <Link
+              to="/products"
+              className="flex items-center text-primary hover:text-primary/90 transition-colors group"
+            >
+              <span className="mr-2">View All Products</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform group-hover:translate-x-1"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
               <ProductCard
                 key={product._id}

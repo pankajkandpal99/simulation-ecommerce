@@ -107,8 +107,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={() => onPageChange(pageNumber)}
         className={`${
           pageNumber === currentPage
-            ? "bg-[#6FFFB4] text-[#0a101f] hover:bg-[#6FFFB4]/90"
-            : "bg-[#121a2a] border-[#1e293b] hover:bg-[#1e293b]"
+            ? "bg-primary text-primary-foreground hover:bg-primary/90"
+            : "bg-background border hover:bg-accent"
         }`}
       >
         {pageNumber}
@@ -139,7 +139,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           size="sm"
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
-          className="gap-1 bg-[#121a2a] border-[#1e293b] hover:bg-[#1e293b]"
+          className="gap-1 bg-background border hover:bg-accent"
         >
           <ChevronLeft className="h-4 w-4" />
           <span className="hidden sm:inline">Previous</span>
@@ -158,7 +158,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           size="sm"
           onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages}
-          className="gap-1 bg-[#121a2a] border-[#1e293b] hover:bg-[#1e293b]"
+          className="gap-1 bg-background border hover:bg-accent"
         >
           <span className="hidden sm:inline">Next</span>
           <ChevronRight className="h-4 w-4" />

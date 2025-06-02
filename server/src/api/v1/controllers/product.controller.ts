@@ -12,7 +12,7 @@ export const ProductController = {
         const products = await Product.find({ isActive: true })
           .session(session)
           .skip(skip)
-          .limit(Number(limit))
+          // .limit(Number(limit))
           .populate("category", "name slug")
           .lean();
 

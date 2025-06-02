@@ -26,6 +26,7 @@ export interface IProduct {
   weight?: number;
   rating?: number;
   reviews?: number;
+  createdAt?: string;
 }
 
 export const ProductCard: React.FC<{
